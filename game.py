@@ -1,5 +1,5 @@
 import time
-from player import HumanPlayer, RandomComputerPlayer
+from player import HumanPlayer, RandomComputerPlayer, SupperComputerPlayer
 
 class TicTacToe:
     def __init__(self):
@@ -115,7 +115,28 @@ def play(game, x_player, o_player, print_game=True):
         print("It't a tie")
 
 if __name__ == "__main__":
-    x_player = HumanPlayer("x")
-    o_player = RandomComputerPlayer("o")
-    t = TicTacToe()
-    play(t, x_player , o_player, True)
+    # x_player = HumanPlayer("x")
+    # # o_player = RandomComputerPlayer("o")
+    # o_player = SupperComputerPlayer("o")
+    # t = TicTacToe()
+    # play(t, x_player , o_player, True)
+
+    # test running 1000 times between RandomComputerPlayer and SupperComputerPlayer
+    x_wins = 0
+    o_wins = 0
+    ties = 0
+
+    for _ in range(1000):
+        x_player = RandomComputerPlayer("x")
+        o_player = SupperComputerPlayer("o")
+        t = TicTacToe()
+        result = play(t, x_player , o_player, False)
+
+        if result == "x":
+            x_wins += 1
+        elif result == "o":
+            o_wins += 1
+        else:
+            ties += 1
+
+    print (f"After 1000 iteration, we have {x_wins} x wins, {o_wins} o wins and {ties} ties")
