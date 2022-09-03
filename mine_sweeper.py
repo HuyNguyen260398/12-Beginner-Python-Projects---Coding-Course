@@ -124,6 +124,7 @@ class Board:
                     visible_board[row][col] = str(self.board[row][col])
                 else:
                     visible_board[row][col] = " "
+        return str(visible_board)
 
 
 # play the game
